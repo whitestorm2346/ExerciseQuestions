@@ -1,5 +1,6 @@
 // ID:410411218 name:´åÌÊ³Ô class:1A
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -13,7 +14,12 @@ int main()
         if(int_Input > int_Max) int_Max = int_Input;
     }
 
-    char line[int_Max][int_Count + 1];
+    char **line = malloc(int_Max * sizeof(char*));
+
+    for(int i = 0; i < int_Max; i++)
+    {
+        *(line + i) = malloc((int_Count + 1) * sizeof(char));
+    }
 
     for(int i = int_Max - 1; i >= 0; i--)
     {
@@ -22,18 +28,25 @@ int main()
             if(intarr_Height[j] > 0)
             {
                 intarr_Height[j]--;
-                line[i][j] = '*';
+                *(*(line + i) + j) = '*';
             }
-            else line[i][j] = ' ';
+            else *(*(line + i) + j) = ' ';
         }
 
-        line[i][int_Count] = '\0';
+        *(*(line + i) + int_Count) = '\0';
     }
 
     for(int i = 0; i < int_Max; i++)
     {
-        printf("%s\n", line[i]);
+        printf("%s\n", *(line + i));
     }
+
+    for(int i = 0; i < int_Max; i++)
+    {
+        free(*(line + i));
+    }
+
+    free(line);
 
     return 0;
 }
