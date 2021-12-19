@@ -12,11 +12,12 @@ class DICT():
 
     def delete(self):
         key = str(input("輸入鍵: "))
+        key_list = self.dict.keys()
 
-        if key not in self.dict:
+        if key not in key_list:
             print("{0} 不存在".format(key))
         else:
-            print("{{0}: '{1}'} 已被刪除".format(key, self.dict[key]))
+            print("{" + f"{key}: '{self.dict[key]}'" + "} 已被刪除")
             self.dict.pop(key)
 
     def print(self):
