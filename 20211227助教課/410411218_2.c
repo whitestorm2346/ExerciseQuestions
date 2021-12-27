@@ -2,25 +2,23 @@
 #include <stdio.h>
 #include <string.h>
 
+_Bool isPalindrome(char str[], int length)
+{
+    for(int i = 0; i < length / 2; i++)
+    {
+        if(str[i] != str[length - i - 1]) return 0;
+    }
+
+    return 1;
+}
+
 int main()
 {
     char str[100];
 
     scanf("%s", str);
 
-    _Bool isPalindrome = 1;
-
-    for(int i = 0; i < strlen(str) / 2; i++)
-    {
-        if(str[i] != str[strlen(str) - i - 1])
-        {
-            isPalindrome = 0;
-
-            break;
-        }
-    }
-
-    if(isPalindrome) printf("相同");
+    if(isPalindrome(str, strlen(str))) printf("相同");
     else printf("不相同");
 
     return 0;
