@@ -11,10 +11,7 @@ void primeNum(int num, int curr)
 
         num /= curr;
 
-        if(num != 0 && num != 1)
-        {
-            printf("*");
-        }
+        if(num != 0 && num != 1) printf("*");
 
         primeNum(num, curr);
     }
