@@ -1,51 +1,36 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main()
 {
-    int int_Max = -1;
-    int intarr_Height[5];
+    int height[5];
 
     for(int i = 0; i < 5; i++)
     {
-        scanf("%d", &intarr_Height[i]);
-
-        if(intarr_Height[i] > int_Max) int_Max = intarr_Height[i];
+        scanf("%d", &height[i]);
     }
 
-    char **line = (char**)malloc(int_Max * sizeof(char*));
+    int max = -1;
 
-    for(int i = 0; i < int_Max; i++)
+    for(int i = 0; i < 5; i++)
     {
-        *(line + i) = (char*)malloc(5 * sizeof(char));
+        if(height[i] > max) max = height[i];
     }
 
-    for(int i = int_Max - 1; i >= 0; i--)
+    for(int i = 0; i < max; i++)
     {
         for(int j = 0; j < 5; j++)
         {
-            if(intarr_Height[j] > 0)
+            if(height[j])
             {
-                intarr_Height[j]--;
-                *(*(line + i) + j) = '*';
+                printf("*");
+
+                height[j]--;
             }
-            else *(*(line + i) + j) = ' ';
+            else printf(" ");
         }
 
-        *(*(line + i) + 5) = '\0';
+        printf("\n");
     }
-
-    for(int i = int_Max - 1; i >= 0; i--)
-    {
-        printf("%s\n", *(line + i));
-    }
-
-    for(int i = 0; i < int_Max; i++)
-    {
-        free(*(line + i));
-    }
-
-    free(line);
 
     return 0;
 }
