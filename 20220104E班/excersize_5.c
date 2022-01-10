@@ -10,7 +10,7 @@ int main()
 
         int temp = num1 + num2;
 
-        num1 = 2, num2 = temp;
+        num1 = num2, num2 = temp;
     }
 
     printf("%f", sum);
